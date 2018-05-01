@@ -1,4 +1,4 @@
-{% set version = '1.13.4' %}
+{% set version = '1.13.5' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,18 +12,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/devtools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/devtools/devtools_{{ version }}.tar.gz
-  sha256: ab82ca75ea301df098191ab68fa3d812317c07c7dc28310d2715fa0d8ac3e1ab
-
-
-  # patches:
-   # List any patch files here
-   # - fix.patch
+  sha256: fa59488415d7b601dc743cf6080834e6fbd49dda6ecd60629cca0fd8ced47cf4
 
 build:
   merge_build_host: True  # [win]
   # If this is a new build for the same version, increment the build number.
   number: 0
-
 
   # This is required to make R link correctly on Linux.
   rpaths:
@@ -91,8 +85,8 @@ extra:
 
 # Package: devtools
 # Title: Tools to Make Developing R Packages Easier
-# Version: 1.13.4
-# Authors@R: c( person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"), person("R Core team", role = "ctb", comment = "Some namespace and vignette code extracted from base R") )
+# Version: 1.13.5
+# Authors@R: c( person("Hadley", "Wickham", role = "aut"), person("Jim", "Hester", , "james.hester@rstudio.com", role = c("aut", "cre")), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"), person("R Core team", role = "ctb", comment = "Some namespace and vignette code extracted from base R") )
 # Encoding: UTF-8
 # Description: Collection of package development tools.
 # URL: https://github.com/hadley/devtools
@@ -104,11 +98,11 @@ extra:
 # VignetteBuilder: knitr
 # RoxygenNote: 6.0.1
 # NeedsCompilation: yes
-# Packaged: 2017-11-08 19:37:59 UTC; jhester
-# Author: Hadley Wickham [aut, cre], Winston Chang [aut], RStudio [cph], R Core team [ctb] (Some namespace and vignette code extracted from base R)
-# Maintainer: Hadley Wickham <hadley@rstudio.com>
+# Packaged: 2018-01-05 20:42:48 UTC; jhester
+# Author: Hadley Wickham [aut], Jim Hester [aut, cre], Winston Chang [aut], RStudio [cph], R Core team [ctb] (Some namespace and vignette code extracted from base R)
+# Maintainer: Jim Hester <james.hester@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2017-11-09 10:44:37 UTC
+# Date/Publication: 2018-02-18 21:53:25 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
