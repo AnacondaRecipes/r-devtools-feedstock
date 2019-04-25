@@ -1,4 +1,4 @@
-{% set version = '1.13.6' %}
+{% set version = '2.0.2' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,43 +11,58 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/devtools_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/devtools/devtools_{{ version }}.tar.gz
-  sha256: b9749de8b095bd4983ef95a7700e53e4295a747fd20e9eae77dc372f5b2236b5
+  sha256: 99a2fa957068254b8ecdb3fc2d50e2950230910ea31c314fc0e7d934e4bd1709
 
 build:
   merge_build_host: True  # [win]
   # If this is a new build for the same version, increment the build number.
   number: 0
+  noarch: generic
 
   # This is required to make R link correctly on Linux.
   rpaths:
     - lib/R/lib/
     - lib/
 
-# Suggests: curl (>= 0.9), crayon, testthat (>= 1.0.2), BiocInstaller, Rcpp (>= 0.10.0), MASS, rmarkdown, knitr, hunspell (>= 2.0), lintr (>= 0.2.1), bitops, roxygen2 (>= 5.0.0), evaluate, rversions, covr, gmailr (> 0.7.0)
+# Suggests: BiocManager, bitops, covr (>= 3.2.0), crayon, curl (>= 0.9), evaluate, foghorn (>= 1.1.0), gmailr (> 0.7.0), knitr, lintr (>= 0.2.1), mockery, pingr, MASS, pkgdown, Rcpp (>= 0.10.0), rhub (>= 1.0.2), rmarkdown, roxygen2 (>= 6.1.0), rversions, spelling (>= 1.1), testthat (>= 1.0.2), whisker
 requirements:
   build:
     - {{posix}}zip               # [win]
 
   host:
     - r-base
+    - r-callr
+    - r-cli
     - r-digest
-    - r-git2r >=0.11.0
+    - r-git2r >=0.23.0
     - r-httr >=0.4
     - r-jsonlite
     - r-memoise >=1.0.0
-    - r-rstudioapi >=0.2.0
-    - r-whisker
+    - r-pkgbuild >=1.0.2
+    - r-pkgload >=1.0.1
+    - r-rcmdcheck >=1.3.2
+    - r-remotes >=2.0.2
+    - r-rstudioapi >=0.6.0.9000
+    - r-sessioninfo
+    - r-usethis >=1.4.0
     - r-withr
 
   run:
     - r-base
+    - r-callr
+    - r-cli
     - r-digest
-    - r-git2r >=0.11.0
+    - r-git2r >=0.23.0
     - r-httr >=0.4
     - r-jsonlite
     - r-memoise >=1.0.0
-    - r-rstudioapi >=0.2.0
-    - r-whisker
+    - r-pkgbuild >=1.0.2
+    - r-pkgload >=1.0.1
+    - r-rcmdcheck >=1.3.2
+    - r-remotes >=2.0.2
+    - r-rstudioapi >=0.6.0.9000
+    - r-sessioninfo
+    - r-usethis >=1.4.0
     - r-withr
 
 test:
@@ -67,6 +82,7 @@ about:
   license: GPL (>= 2)
   summary: Collection of package development tools.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
@@ -79,24 +95,24 @@ extra:
 
 # Package: devtools
 # Title: Tools to Make Developing R Packages Easier
-# Version: 1.13.6
+# Version: 2.0.2
 # Authors@R: c( person("Hadley", "Wickham", role = "aut"), person("Jim", "Hester", , "james.hester@rstudio.com", role = c("aut", "cre")), person("Winston", "Chang", role = "aut"), person("RStudio", role = "cph"), person("R Core team", role = "ctb", comment = "Some namespace and vignette code extracted from base R") )
-# Encoding: UTF-8
 # Description: Collection of package development tools.
+# License: GPL (>= 2)
 # URL: https://github.com/r-lib/devtools
 # BugReports: https://github.com/r-lib/devtools/issues
 # Depends: R (>= 3.0.2)
-# Imports: httr (>= 0.4), utils, tools, methods, memoise (>= 1.0.0), whisker, digest, rstudioapi (>= 0.2.0), jsonlite, stats, git2r (>= 0.11.0), withr
-# Suggests: curl (>= 0.9), crayon, testthat (>= 1.0.2), BiocInstaller, Rcpp (>= 0.10.0), MASS, rmarkdown, knitr, hunspell (>= 2.0), lintr (>= 0.2.1), bitops, roxygen2 (>= 5.0.0), evaluate, rversions, covr, gmailr (> 0.7.0)
-# License: GPL (>= 2)
+# Imports: callr, cli, digest, git2r (>= 0.23.0), httr (>= 0.4), jsonlite, memoise (>= 1.0.0), pkgbuild (>= 1.0.2), pkgload (>= 1.0.1), rcmdcheck (>= 1.3.2), remotes (>= 2.0.2), rstudioapi (>= 0.6.0.9000), sessioninfo, stats, tools, usethis (>= 1.4.0), utils, withr
+# Suggests: BiocManager, bitops, covr (>= 3.2.0), crayon, curl (>= 0.9), evaluate, foghorn (>= 1.1.0), gmailr (> 0.7.0), knitr, lintr (>= 0.2.1), mockery, pingr, MASS, pkgdown, Rcpp (>= 0.10.0), rhub (>= 1.0.2), rmarkdown, roxygen2 (>= 6.1.0), rversions, spelling (>= 1.1), testthat (>= 1.0.2), whisker
 # VignetteBuilder: knitr
-# RoxygenNote: 6.0.1
+# Encoding: UTF-8
+# RoxygenNote: 6.1.1
 # NeedsCompilation: no
-# Packaged: 2018-06-27 17:45:40 UTC; jhester
+# Packaged: 2019-04-08 15:34:15 UTC; jhester
 # Author: Hadley Wickham [aut], Jim Hester [aut, cre], Winston Chang [aut], RStudio [cph], R Core team [ctb] (Some namespace and vignette code extracted from base R)
 # Maintainer: Jim Hester <james.hester@rstudio.com>
 # Repository: CRAN
-# Date/Publication: 2018-06-27 20:57:54 UTC
+# Date/Publication: 2019-04-08 20:03:38 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
